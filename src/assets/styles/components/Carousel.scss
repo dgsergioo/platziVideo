@@ -1,0 +1,42 @@
+.carousel {
+    width: 100%;
+    overflow: scroll;
+    padding-left: 30px;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.carousel__container {
+    box-sizing: border-box;
+    font-size: 0;
+    white-space: nowrap;
+    margin: 70px 0px;
+    padding-bottom: 10px;
+}
+
+.carousel__container:hover .carousel-item {
+    opacity: 0.3;
+}
+
+.carousel__container:hover .carousel-item:hover {
+    transform: scale(1.5);
+    opacity: 1;
+}
+
+/* ----- BARRA SCROLL ----- */
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(190, 189, 189, 0.219);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(137, 252, 122, 0.336);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.699);
+}

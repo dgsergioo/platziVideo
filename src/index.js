@@ -1,7 +1,10 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import HelloWorld from './components/HelloWorld';
 
-ReactDom.render(<HelloWorld />, document.getElementById('app'));
+//  Importamos el .jsx que contiene todos los componentes
+import App from './containers/app';
+
+//  Aca es donde enviamos el componente que se mostrara en la web
+ReactDom.render(<App />, document.getElementById('app'));
 
 
