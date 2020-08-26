@@ -19,8 +19,8 @@ const Home = () => {
     const initialState = useInitialState(API);
 
 return initialState.length === 0 ? <h1>Loading...</h1> : (
-    <div className="App">
-        <Header />
+    <>
+        
         <Search />
 
         {/* Dentro del title va un titulo que damos, que es el parametro que llegara a title de Categories.jsx */}
@@ -52,9 +52,7 @@ return initialState.length === 0 ? <h1>Loading...</h1> : (
             </Carousel>
         </Categories>
 
-        <Footer />
-
-    </div>
+    </>
     );
 }
 
