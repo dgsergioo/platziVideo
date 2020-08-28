@@ -1,35 +1,38 @@
 import React, { useState, useEffect } from 'react';
-import Header from '../components/Header';
+import { connect } from 'react-redux';
 import Search from '../components/Search';
 import Categories from '../components/Categories';
 import Carousel from '../components/Carousel';
 import CarouselItem from '../components/CarouselItem';
-import Footer from '../components/Footer';
-import useInitialState from '../hooks/useInitialState';
+// import useInitialState from '../hooks/useInitialState';
 import '../assets/styles/App.scss';
 
 //  Arriba se hizo la importacion de todos los componentes .jsx que creamos, ademas del css
 
 //  La direccion de la API
-const API = 'http://localhost:3000/initalState';
+// const API = 'http://localhost:3000/initalState';
 
 //  Dentro del div van ubicados a gusto los componentes
-const Home = () => {
+const Home = ({ myList, trends, originals }) => {
 
-    const initialState = useInitialState(API);
+    // const initialState = useInitialState(API);
 
-return initialState.length === 0 ? <h1>Loading...</h1> : (
+return (
     <>
         
         <Search />
 
         {/* Dentro del title va un titulo que damos, que es el parametro que llegara a title de Categories.jsx */}
         {/*  Aca tenemos una condicion y si no contiene nada, no imprime */}
-        {initialState.mylist.length > 0 && 
+        {myList.length > 0 && 
             <Categories title="Mi lista">
                 <Carousel>
-                    {initialState.mylist.map(item =>
-                        <CarouselItem key={item.id} {...item} />
+                    {myList.map(item =>
+                        <CarouselItem 
+                            key={item.id}
+                            {...item} 
+                            isList 
+                        />
                     )}
                 </Carousel>
             </Categories>
@@ -38,7 +41,7 @@ return initialState.length === 0 ? <h1>Loading...</h1> : (
         {/* Aca le decimos que nos imprima, recorriendo todo con el .map */}
         <Categories title="Tendencias">
             <Carousel>
-                {initialState.trends.map(item =>
+                {trends.map(item =>
                     <CarouselItem key={item.id} {...item} />
                 )}
             </Carousel>
@@ -46,7 +49,7 @@ return initialState.length === 0 ? <h1>Loading...</h1> : (
 
         <Categories title="Originales de platzi video">
             <Carousel>
-                {initialState.originals.map(item =>
+                {originals.map(item =>
                     <CarouselItem key={item.id} {...item} />
                 )}
             </Carousel>
@@ -56,4 +59,13 @@ return initialState.length === 0 ? <h1>Loading...</h1> : (
     );
 }
 
-export default Home;
+// aca solo ponemos los elementos que solo vamos a usar
+const mapStateToProps = state => {
+    return {
+        myList: state.myList,
+        trends: state.trends,
+        originals:state.originals,
+    };
+};
+
+export default connect(mapStateToProps, null)(Home);
