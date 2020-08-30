@@ -35,8 +35,8 @@ const CarouselItem = ( props ) => {
                     />
                     {isList ? 
                         <img 
-                            className="carousel-item__details--img" s
-                            rc={removeIcon} 
+                            className="carousel-item__details--img" 
+                            src={removeIcon} 
                             alt="Plus Icon" 
                             onClick={() => handleDeleteFavorite(id)}
                         /> :
