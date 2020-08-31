@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import gravatar from '../utils/gravatar';
+import { logoutRequest } from '../actions';
 
 //  Importamos los estilos css
 import '../assets/styles/components/Header.scss';
@@ -16,6 +17,11 @@ const Header = props => {
 
     // validacion para saber si tenemos o no un usuario
     const hasUser = Object.keys(user).length > 0;
+
+    // Logica para el logout
+    const handleLogout = () => {
+        props.logoutRequest({});
+    }
 
     return (
     <header className="header">
@@ -34,12 +40,23 @@ const Header = props => {
             </div>
             
             <ul>
-                <li><a href="/">Cuenta</a></li>
-                <li>
-                    <Link to="/login"> 
-                        Iniciar Sesión
-                    </Link>
-                </li>
+
+                {hasUser ?
+                    <li><a href="/">{user.name}</a></li>
+                    :
+                    null                    
+                }
+
+                {hasUser ? 
+                    <li><a href="#logout" onClick={handleLogout}>Cerrar Sesión</a></li>
+                    :
+                    <li>
+                        <Link to="/login"> 
+                            Iniciar Sesión
+                        </Link>
+                    </li>
+                }
+
             </ul>
         </div>
     </header>
@@ -53,4 +70,8 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps, null)(Header);
+const mapDispatchToProps = {
+    logoutRequest,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
