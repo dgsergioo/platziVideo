@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { registerRequest } from '../actions';
 import { Link } from 'react-router-dom';
+import Header from '../components/Header';
 import '../assets/styles/components/Register.scss'; 
 
 const Register = props => {
@@ -26,6 +27,8 @@ const Register = props => {
     }
 
     return (
+    <>
+    <Header isRegister/>
         <section className="login">
             <section className="login__container">
                 <h2 tabindex="0">Regístrate</h2>
@@ -65,6 +68,7 @@ const Register = props => {
                 
             </section>
         </section>
+    </>
     );
 };
 

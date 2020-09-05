@@ -5,6 +5,7 @@ import { loginRequest } from '../actions';
 import '../assets/styles/components/Login.scss';
 import googleIcon from '../assets/static/google-icon.png';
 import twitterIcon from '../assets/static/twitter-icon.png';
+import Header from '../components/Header';
 
 const Login = props => {
     // Logica para mi formulario
@@ -29,6 +30,8 @@ const Login = props => {
     }
 
     return (
+    <>    
+    <Header isLogin/>
         <section className="login">
             <section className="login__container">
                 <h2 tabindex="0">Inicia sesión</h2>
@@ -62,13 +65,14 @@ const Login = props => {
                     <div><img src={twitterIcon} alt="twitter" />Inicia sesión con Twitter</div>
                 </section>
                 <p className="login__container--register">
-                    No tienes ninguna cuenta 
+                    No tienes ninguna cuenta {' '}
                     <Link to="/register">
                         Regístrate
                     </Link>
                 </p>
             </section>
         </section>
+    </>
     );
 };
 

@@ -4,6 +4,8 @@ import Search from '../components/Search';
 import Categories from '../components/Categories';
 import Carousel from '../components/Carousel';
 import CarouselItem from '../components/CarouselItem';
+import Header from '../components/Header';
+
 // import useInitialState from '../hooks/useInitialState';
 import '../assets/styles/App.scss';
 
@@ -19,8 +21,8 @@ const Home = ({ myList, trends, originals }) => {
 
 return (
     <>
-        
-        <Search />
+        <Header />
+        <Search isHome/>
 
         {/* Dentro del title va un titulo que damos, que es el parametro que llegara a title de Categories.jsx */}
         {/*  Aca tenemos una condicion y si no contiene nada, no imprime */}
